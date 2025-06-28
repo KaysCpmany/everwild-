@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تورهای ماجراجویی ایران - اِوروایلد</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "primary-blue": "#1e3a5f",
+              "secondary-blue": "#4a86b8",
+              "accent-yellow": "#f9a825",
+              "accent-orange": "#e65100",
+              "nature-green": "#2e7d32",
+            },
+            fontFamily: {
+              vazir: ['Vazirmatn', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: 'Vazirmatn', sans-serif;
+      }
+      .navbar {
+        transition: all 0.4s ease;
+        backdrop-filter: blur(10px);
+        color: aliceblue !important;
+      }
+      .nav-scrolled {
+        background: rgba(73, 113, 165, 0.95);
+        backdrop-filter: blur(10px);
+        color: aliceblue !important;
+      }
+      .hero-image {
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+          url("bg.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .testimonial-bg {
+        background: linear-gradient(
+            rgba(30, 58, 95, 0.85),
+            rgba(30, 58, 95, 0.85)
+          ),
+          url("bg.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      }
+      .feature-icon {
+        transition: all 0.3s ease;
+      }
+      .feature-card:hover .feature-icon {
+        transform: scale(1.2);
+        color: #f9a825;
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+      .parallax {
+        background-attachment: fixed;
+      }
+
+      /* Mobile menu styles */
+      .mobile-menu {
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      .mobile-menu.active {
+        transform: translateX(0);
+      }
+      .mobile-menu-overlay {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease-in-out;
+      }
+      .mobile-menu-overlay.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .tour-image {
+        height: 100%;
+        min-height: 200px;
+        object-fit: cover;
+      }
+      .tour-card {
+        direction: ltr;
+      }
+      .iran-map {
+        filter: drop-shadow(0 0 10px rgba(0,0,0,0.2));
+      }
+    </style>
+</head>
+<body class="font-vazir bg-white text-gray-800">
+    <!-- Navigation -->
+    <nav class="navbar fixed w-full z-50 py-4 px-4 md:px-8">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+          <div
+            class="w-10 h-10 rounded-full bg-accent-yellow flex items-center justify-center"
+          >
+            <i class="fas fa-mountain text-primary-blue text-xl"></i>
+          </div>
+          <span class="text-2xl font-bold text-primary-blue">
+            اِور<span class="text-accent-yellow">وایلد</span>
+          </span>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex space-x-8">
+          <a href="#" class="font-semibold hover:text-secondary-blue transition"
+            >خانه</a
+          >
+          <a href="#" class="font-semibold hover:text-secondary-blue transition"
+            >تورها</a
+          >
+          <a href="#" class="font-semibold hover:text-secondary-blue transition"
+            >مقاصد</a
+          >
+          <a
+            href="about.html"
+            class="font-semibold hover:text-secondary-blue transition"
+            >درباره ما</a
+          >
+          <a href="#" class="font-semibold hover:text-secondary-blue transition"
+            >تماس</a
+          >
+        </div>
+
+        <div class="flex items-center space-x-4">
+          <button
+            class="hidden md:block bg-accent-yellow text-primary-blue font-bold py-2 px-6 rounded-full hover:bg-accent-orange transition"
+          >
+            رزرو تور
+          </button>
+          <button id="menu-toggle" class="md:hidden text-primary-blue">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu-overlay"
+      class="mobile-menu-overlay fixed inset-0 bg-black bg-opacity-70 z-40"
+    ></div>
+    <div
+      id="mobile-menu"
+      class="mobile-menu fixed top-0 right-0 w-64 h-full bg-primary-blue z-50 p-6"
+    >
+      <div class="flex justify-end mb-10">
+        <button id="menu-close" class="text-white">
+          <i class="fas fa-times text-2xl"></i>
+        </button>
+      </div>
+      <div class="flex flex-col space-y-6">
+        <a
+          href="#"
+          class="text-white text-xl font-semibold hover:text-accent-yellow"
+          >خانه</a
+        >
+        <a
+          href="#"
+          class="text-white text-xl font-semibold hover:text-accent-yellow"
+          >تورها</a
+        >
+        <a
+          href="#"
+          class="text-white text-xl font-semibold hover:text-accent-yellow"
+          >مقاصد</a
+        >
+        <a
+          href="about.html"
+          class="text-white text-xl font-semibold hover:text-accent-yellow"
+          >درباره ما</a
+        >
+        <a
+          href="#"
+          class="text-white text-xl font-semibold hover:text-accent-yellow"
+          >تماس</a
+        >
+        <button
+          class="bg-accent-yellow text-primary-blue font-bold py-3 px-6 rounded-full mt-4"
+        >
+          رزرو تور
+        </button>
+      </div>
+      <div
+        class="absolute bottom-6 left-0 right-0 px-6 text-center text-secondary-blue"
+      >
+        <p>© ۱۴۰۲ اِوروایلد</p>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-image pt-32 pb-24 md:pt-48 md:pb-36">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="max-w-2xl">
+          <h1
+            class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6"
+          >
+            کشف کنید
+            <span class="text-accent-yellow">شگفتی‌های ایران</span> را
+          </h1>
+          <p class="text-xl text-white mb-10 opacity-90">
+            زیبایی‌های طبیعت ایران را با تورهای ماجراجویی ما تجربه کنید. از کوهستان‌های سر به فلک کشیده تا بیابان‌های بی‌کران
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <button
+              class="bg-accent-yellow text-primary-blue font-bold py-3 px-8 rounded-full text-lg hover:bg-accent-orange transition"
+            >
+              تورهای ما
+            </button>
+            <button
+              class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-white hover:text-primary-blue transition"
+            >
+              <i class="fas fa-play ml-2"></i>نمایشگاه تصاویر
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-16">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-primary-blue mb-4"
+          >
+            چرا اِوروایلد؟
+          </h2>
+          <div class="w-24 h-1 bg-accent-yellow mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div
+            class="feature-card bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition"
+          >
+            <div
+              class="feature-icon w-20 h-20 rounded-full bg-primary-blue flex items-center justify-center mx-auto mb-6"
+            >
+              <i class="fas fa-users text-secondary-blue text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-primary-blue mb-3">
+              راهنمایان بومی
+            </h3>
+            <p class="text-gray-600">
+              راهنمایان محلی ما با سال‌ها تجربه، شما را با رازهای طبیعت ایران آشنا می‌کنند
+            </p>
+          </div>
+
+          <div
+            class="feature-card bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition"
+          >
+            <div
+              class="feature-icon w-20 h-20 rounded-full bg-primary-blue flex items-center justify-center mx-auto mb-6"
+            >
+              <i class="fas fa-shield-alt text-secondary-blue text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-primary-blue mb-3">
+              ایمنی در اولویت
+            </h3>
+            <p class="text-gray-600">
+              ایمنی شما با تجهیزات استاندارد و تیم پشتیبانی آموزش دیده تضمین می‌شود
+            </p>
+          </div>
+
+          <div
+            class="feature-card bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition"
+          >
+            <div
+              class="feature-icon w-20 h-20 rounded-full bg-primary-blue flex items-center justify-center mx-auto mb-6"
+            >
+              <i class="fas fa-hands-helping text-secondary-blue text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-primary-blue mb-3">
+              گردشگری مسئولانه
+            </h3>
+            <p class="text-gray-600">
+              متعهد به گردشگری پایدار و حفظ میراث طبیعی ایران برای نسل‌های آینده
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Tours -->
+    <section class="py-20">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-16">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-primary-blue mb-4"
+          >
+            تورهای ویژه
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            بهترین طبیعت ایران را با تورهای برنامه‌ریزی شده ما تجربه کنید
+          </p>
+          <div class="w-24 h-1 bg-accent-yellow mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div
+            class="card-hover bg-white rounded-2xl overflow-hidden shadow-xl tour-card"
+          >
+            <div class="md:flex">
+              <div class="md:w-2/5 relative">
+                <img
+                  src="damavand.jpg"
+                  alt="Damavand"
+                  class="tour-image w-full"
+                />
+                <div
+                  class="absolute top-4 left-4 bg-accent-yellow text-primary-blue font-bold py-1 px-4 rounded-full"
+                >
+                  ۴ روز
+                </div>
+              </div>
+              <div class="md:w-3/5 p-6">
+                <div class="flex justify-between items-start mb-3">
+                  <h3
+                    class="text-2xl font-bold text-primary-blue"
+                  >
+                    صعود به دماوند
+                  </h3>
+                  <span class="text-xl font-bold text-accent-orange">
+                    ۱,۸۹۹,۰۰۰ تومان
+                  </span>
+                </div>
+                <p class="text-gray-600 mb-4">
+                  صعود به بام ایران، قله دماوند. تجربه‌ای فراموش‌نشدنی با مناظر خیره‌کننده
+                </p>
+                <div class="flex flex-wrap gap-2 mb-5">
+                  <span
+                    class="bg-secondary-blue bg-opacity-20 text-secondary-blue py-1 px-3 rounded-full text-sm"
+                  >
+                    <i class="fas fa-hiking ml-1"></i> کوهنوردی
+                  </span>
+                  <span
+                    class="bg-secondary-blue bg-opacity-20 text-secondary-blue py-1 px-3 rounded-full text-sm"
+                  >
+                    <i class="fas fa-campground ml-1"></i> کمپینگ
+                  </span>
+                  <span
+                    class="bg-secondary-blue bg-opacity-20 text-secondary-blue py-1 px-3 rounded-full text-sm"
+                  >
+                    <i class="fas fa-mountain ml-1"></i> طبیعت
+                  </span>
+                </div>
+                <button
+                  class="w-full bg-primary-blue text-white py-3 rounded-lg font-bold hover:bg-secondary-blue transition"
+                >
+                  رزرو این تور
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="card-hover bg-white rounded-2xl overflow-hidden shadow-xl tour-card"
+          >
+            <div class="md:flex">
+              <div class="md:w-2/5 relative">
+                <img
+                  src="bg.jpg"
+                  alt="Lut Desert"
+                  class="tour-image w-full"
+                />
+                <div
+                  class="absolute top-4 left-4 bg-accent-yellow text-primary-blue font-bold py-1 px-4 rounded-full"
+                >
+                  ۳ روز
+                </div>
+              </div>
+              <div class="md:w-3/5 p-6">
+                <div class="flex justify-between items-start mb-3">
+                  <h3
+                    class="text-2xl font-bold text-primary-blue"
+                  >
+                    کویر لوت
+                  </h3>
+                  <span class="text-xl font-bold text-accent-orange">
+                    ۱,۲۹۹,۰۰۰ تومان
+                  </span>
+                </div>
+                <p class="text-gray-600 mb-4">
+                  سفری به گرم‌ترین نقطه کره زمین با مناظر بی‌نظیر کلوت‌ها و شهداد
+                </p>
+                <div class="flex flex-wrap gap-2 mb-5">
+                  <span
+                    class="bg-secondary-blue bg-opacity-20 text-secondary-blue py-1 px-3 rounded-full text-sm"
+                  >
+                    <i class="fas fa-car ml-1"></i> آفرود
+                  </span>
+                  <span
+                    class="bg-secondary-blue bg-opacity-20 text-secondary-blue py-1 px-3 rounded-full text-sm"
+                  >
+                    <i class="fas fa-star ml-1"></i> تماشای ستارگان
+                  </span>
+                  <span
+                    class="bg-secondary-blue bg-opacity-20 text-secondary-blue py-1 px-3 rounded-full text-sm"
+                  >
+                    <i class="fas fa-camera ml-1"></i> عکاسی
+                  </span>
+                </div>
+                <button
+                  class="w-full bg-primary-blue text-white py-3 rounded-lg font-bold hover:bg-secondary-blue transition"
+                >
+                  رزرو این تور
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="card-hover bg-white rounded-2xl overflow-hidden shadow-xl tour-card"
+          >
+            <div class="md:flex">
+              <div class="md:w-2/5 relative">
+                <img
+                  src="a0a5c3c9-2d8b-4a1e-9ef0-43929a21cab1.jpg"
+                  alt="Alamut"
+                  class="tour-image w-full"
+                />
+                <div
+                  class="absolute top-4 left-4 bg-accent-yellow text-primary-blue font-bold py-1 px-4 rounded-full"
+                >
+                  ۲ روز
+                </div>
+              </div>
+              <div class="md:w-3/5 p-6">
+                <div class="flex justify-between items-start mb-3">
+                  <h3
+                    class="text-2xl font-bold text-primary-blue"
+                  >
+                    دره الموت
+                  </h3>
+                  <span class="text-xl font-bold text-accent-orange">
+                    ۸۹۹,۰۰۰ تومان
+                  </span>
+                </div>
+                <p class="text-gray-600 mb-4">
+                  کاوش در قلعه الموت و طبیعت بکر دره‌های قزوین با مناظر چشم‌نواز
+                </p>
+                <div class="flex flex-wrap gap-2 mb-5">
+                  <span
+                    class="bg-secondary-blue bg-opacity-20 text-secondary-blue py-1 px-3 rounded-full text-sm"
+                  >
+                    <i class="fas fa-hiking ml-1"></i> پیاده‌روی
+                  </span>
+                  <span
+                    class="bg-secondary-blue bg-opacity-20 text-secondary-blue py-1 px-3 rounded-full text-sm"
+                  >
+                    <i class="fas fa-landmark ml-1"></i> تاریخ
+                  </span>
+                  <span
+                    class="bg-secondary-blue bg-opacity-20 text-secondary-blue py-1 px-3 rounded-full text-sm"
+                  >
+                    <i class="fas fa-tree ml-1"></i> طبیعت
+                  </span>
+                </div>
+                <button
+                  class="w-full bg-primary-blue text-white py-3 rounded-lg font-bold hover:bg-secondary-blue transition"
+                >
+                  رزرو این تور
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="card-hover bg-white rounded-2xl overflow-hidden shadow-xl tour-card"
+          >
+            <div class="md:flex">
+              <div class="md:w-2/5 relative">
+                <img
+                  src="hotmox.jpg"
+                  alt="Hyrcanian Forest"
+                  class="tour-image w-full"
+                />
+                <div
+                  class="absolute top-4 left-4 bg-accent-yellow text-primary-blue font-bold py-1 px-4 rounded-full"
+                >
+                  ۵ روز
+                </div>
+              </div>
+              <div class="md:w-3/5 p-6">
+                <div class="flex justify-between items-start mb-3">
+                  <h3
+                    class="text-2xl font-bold text-primary-blue"
+                  >
+                    جنگل‌های هیرکانی
+                  </h3>
+                  <span class="text-xl font-bold text-accent-orange">
+                    ۲,۱۹۹,۰۰۰ تومان
+                  </span>
+                </div>
+                <p class="text-gray-600 mb-4">
+                  گشت‌وگذار در جنگل‌های باستانی شمال ایران با اکوسیستم منحصر به فرد
+                </p>
+                <div class="flex flex-wrap gap-2 mb-5">
+                  <span
+                    class="bg-secondary-blue bg-opacity-20 text-secondary-blue py-1 px-3 rounded-full text-sm"
+                  >
+                    <i class="fas fa-tree ml-1"></i> جنگل‌نوردی
+                  </span>
+                  <span
+                    class="bg-secondary-blue bg-opacity-20 text-secondary-blue py-1 px-3 rounded-full text-sm"
+                  >
+                    <i class="fas fa-camera ml-1"></i> عکاسی
+                  </span>
+                  <span
+                    class="bg-secondary-blue bg-opacity-20 text-secondary-blue py-1 px-3 rounded-full text-sm"
+                  >
+                    <i class="fas fa-water ml-1"></i> آبشارها
+                  </span>
+                </div>
+                <button
+                  class="w-full bg-primary-blue text-white py-3 rounded-lg font-bold hover:bg-secondary-blue transition"
+                >
+                  رزرو این تور
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-primary-blue text-white">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <div class="text-4xl md:text-5xl font-bold mb-2 animate-float">
+              ۲۸+
+            </div>
+            <div class="text-secondary-blue font-semibold">تور ماجراجویی</div>
+          </div>
+          <div>
+            <div
+              class="text-4xl md:text-5xl font-bold mb-2 animate-float"
+              style="animation-delay: 0.2s"
+            >
+              ۱۲هزار+
+            </div>
+            <div class="text-secondary-blue font-semibold">مسافر خوشحال</div>
+          </div>
+          <div>
+            <div
+              class="text-4xl md:text-5xl font-bold mb-2 animate-float"
+              style="animation-delay: 0.4s"
+            >
+              ۶۵
+            </div>
+            <div class="text-secondary-blue font-semibold">راهنمای متخصص</div>
+          </div>
+          <div>
+            <div
+              class="text-4xl md:text-5xl font-bold mb-2 animate-float"
+              style="animation-delay: 0.6s"
+            >
+              ۱۸
+            </div>
+            <div class="text-secondary-blue font-semibold">سال تجربه</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonial-bg py-20 text-white">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            تجربه مسافران
+          </h2>
+          <p class="max-w-2xl mx-auto opacity-80">
+            نظرات مسافرانی که با ما طبیعت ایران را کشف کرده‌اند
+          </p>
+          <div class="w-24 h-1 bg-accent-yellow mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white bg-opacity-10 p-8 rounded-2xl backdrop-blur-md">
+            <div class="text-accent-yellow text-2xl mb-4">
+              <i class="fas fa-quote-left"></i>
+            </div>
+            <p class="mb-6 italic">
+              "صعود به دماوند با تیم اِوروایلد یکی از بهترین تجربیات زندگی‌ام بود. راهنمایان حرفه‌ای و تدارکات عالی."
+            </p>
+            <div class="flex items-center">
+              <img
+                src="https://randomuser.me/api/portraits/women/44.jpg"
+                alt="Sarah"
+                class="w-12 h-12 rounded-full ml-4 border-2 border-accent-yellow"
+              />
+              <div>
+                <div class="font-bold">نازنین رضایی</div>
+                <div class="text-secondary-blue text-sm">تور دماوند</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white bg-opacity-10 p-8 rounded-2xl backdrop-blur-md">
+            <div class="text-accent-yellow text-2xl mb-4">
+              <i class="fas fa-quote-left"></i>
+            </div>
+            <p class="mb-6 italic">
+              "کویر لوت با تمام زیبایی‌هایش. شب‌های پرستاره لوت رو هرگز فراموش نمی‌کنم. تشکر از تیم حرفه‌ای اِوروایلد"
+            </p>
+            <div class="flex items-center">
+              <img
+                src="https://randomuser.me/api/portraits/men/32.jpg"
+                alt="Michael"
+                class="w-12 h-12 rounded-full ml-4 border-2 border-accent-yellow"
+              />
+              <div>
+                <div class="font-bold">امیرحسین محمدی</div>
+                <div class="text-secondary-blue text-sm">تور کویر لوت</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white bg-opacity-10 p-8 rounded-2xl backdrop-blur-md">
+            <div class="text-accent-yellow text-2xl mb-4">
+              <i class="fas fa-quote-left"></i>
+            </div>
+            <p class="mb-6 italic">
+              "جنگل‌های هیرکانی گنجینه‌ای پنهان در شمال ایران. راهنمایان محلی اطلاعات ارزشمندی درباره گیاهان و جانوران ارائه دادند."
+            </p>
+            <div class="flex items-center">
+              <img
+                src="https://randomuser.me/api/portraits/women/68.jpg"
+                alt="Emily"
+                class="w-12 h-12 rounded-full ml-4 border-2 border-accent-yellow"
+              />
+              <div>
+                <div class="font-bold">فاطمه حسینی</div>
+                <div class="text-secondary-blue text-sm">
+                  تور جنگل‌های هیرکانی
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gray-50">
+      <div
+        class="max-w-5xl mx-auto bg-primary-blue rounded-3xl overflow-hidden shadow-2xl"
+      >
+        <div class="md:flex">
+          <div
+            class="md:w-2/5 bg-cover bg-center hidden md:block parallax"
+            style="
+              background-image: url('Hormoz1.jpg');
+            "
+          ></div>
+          <div class="md:w-3/5 p-10 text-center">
+            <h3 class="text-3xl font-bold text-white mb-4">
+              برای ماجراجویی آماده‌اید؟
+            </h3>
+            <p class="text-secondary-blue mb-8">
+              به خانواده بزرگ مسافران اِوروایلد بپیوندید و طبیعت بکر ایران را کشف کنید
+            </p>
+
+            <form class="mb-6">
+              <div class="flex flex-col sm:flex-row gap-4">
+                <input
+                  type="email"
+                  placeholder="آدرس ایمیل شما"
+                  class="flex-grow py-4 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-accent-yellow"
+                />
+                <button
+                  class="bg-accent-yellow text-primary-blue font-bold py-4 px-8 rounded-full hover:bg-accent-orange transition whitespace-nowrap"
+                >
+                  عضویت در خبرنامه
+                </button>
+              </div>
+            </form>
+
+            <div class="flex justify-center space-x-4">
+              <div
+                class="w-10 h-10 rounded-full bg-secondary-blue flex items-center justify-center"
+              >
+                <i class="fab fa-instagram"></i>
+              </div>
+              <div
+                class="w-10 h-10 rounded-full bg-secondary-blue flex items-center justify-center"
+              >
+                <i class="fab fa-telegram"></i>
+              </div>
+              <div
+                class="w-10 h-10 rounded-full bg-secondary-blue flex items-center justify-center"
+              >
+                <i class="fab fa-whatsapp"></i>
+              </div>
+              <div
+                class="w-10 h-10 rounded-full bg-secondary-blue flex items-center justify-center"
+              >
+                <i class="fab fa-youtube"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-blue text-white pt-16 pb-8">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+          <div>
+            <div class="flex items-center space-x-2 mb-6">
+              <div
+                class="w-10 h-10 rounded-full bg-accent-yellow flex items-center justify-center"
+              >
+                <i class="fas fa-mountain text-primary-blue text-xl"></i>
+              </div>
+              <span class="text-2xl font-bold">
+               اِور<span class="text-accent-yellow">وایلد</span>
+              </span>
+            </div>
+            <p class="text-secondary-blue mb-6">
+              ارائه‌دهنده تورهای ماجراجویی در طبیعت بکر ایران از سال ۱۳۸۵
+            </p>
+            <div class="flex space-x-4">
+              <div
+                class="w-10 h-10 rounded-full bg-secondary-blue flex items-center justify-center"
+              >
+                <i class="fab fa-instagram"></i>
+              </div>
+              <div
+                class="w-10 h-10 rounded-full bg-secondary-blue flex items-center justify-center"
+              >
+                <i class="fab fa-telegram"></i>
+              </div>
+              <div
+                class="w-10 h-10 rounded-full bg-secondary-blue flex items-center justify-center"
+              >
+                <i class="fab fa-whatsapp"></i>
+              </div>
+              <div
+                class="w-10 h-10 rounded-full bg-secondary-blue flex items-center justify-center"
+              >
+                <i class="fab fa-youtube"></i>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-bold mb-6">مقاصد محبوب</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-secondary-blue hover:text-accent-yellow transition"
+                  >دماوند</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-secondary-blue hover:text-accent-yellow transition"
+                  >کویر لوت</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-secondary-blue hover:text-accent-yellow transition"
+                  >دره الموت</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-secondary-blue hover:text-accent-yellow transition"
+                  >جنگل‌های هیرکانی</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-secondary-blue hover:text-accent-yellow transition"
+                  >دریاچه ارومیه</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-bold mb-6">انواع تورها</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-secondary-blue hover:text-accent-yellow transition"
+                  >کوهنوردی</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-secondary-blue hover:text-accent-yellow transition"
+                  >کویرنوردی</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-secondary-blue hover:text-accent-yellow transition"
+                  >جنگل‌نوردی</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-secondary-blue hover:text-accent-yellow transition"
+                  >تورهای عکاسی</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-secondary-blue hover:text-accent-yellow transition"
+                  >تورهای زمستانی</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-bold mb-6">راه‌های ارتباطی</h4>
+            <ul class="space-y-4 text-secondary-blue">
+              <li class="flex items-start">
+                <i
+                  class="fas fa-map-marker-alt mt-1 ml-3 text-accent-yellow"
+                ></i>
+                <span>تهران، خیابان ولیعصر، پلاک ۱۲۳۴</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-phone mt-1 ml-3 text-accent-yellow"></i>
+                <span>۰۲۱-۲۲۳۳۴۴۵۵</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-envelope mt-1 ml-3 text-accent-yellow"></i>
+                <span>info@everwild.ir</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-clock mt-1 ml-3 text-accent-yellow"></i>
+                <span>شنبه تا چهارشنبه: ۹ صبح تا ۵ عصر | پنجشنبه: ۹ صبح تا ۱ ظهر</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="pt-8 border-t border-secondary-blue border-opacity-20 text-center text-secondary-blue text-sm"
+        >
+          <p>
+            © ۱۴۰۲ اِوروایلد. تمامی حقوق محفوظ است. طبیعت ایران را با ما تجربه کنید.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("nav-scrolled");
+          navbar.classList.add("py-3");
+          navbar.classList.remove("py-4");
+        } else {
+          navbar.classList.remove("nav-scrolled");
+          navbar.classList.remove("py-3");
+          navbar.classList.add("py-4");
+        }
+      });
+
+      // Mobile menu functionality
+      const menuToggle = document.getElementById("menu-toggle");
+      const menuClose = document.getElementById("menu-close");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileMenuOverlay = document.getElementById("mobile-menu-overlay");
+
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.add("active");
+        mobileMenuOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+
+      menuClose.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+        mobileMenuOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+
+      mobileMenuOverlay.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+        mobileMenuOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+
+      // Initialize the navbar state
+      window.dispatchEvent(new Event("scroll"));
+    </script>
+  </body>
+</html>
