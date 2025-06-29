@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>درباره ما - اکسپدیشن‌های دامون</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "alborz-blue": "#1e3a5f",
+            "caspian-blue": "#4a86b8",
+            "desert-gold": "#f9a825",
+            "volcano-orange": "#e65100",
+            "forest-green": "#2e7d32",
+          },
+          fontFamily: {
+            vazir: ["Vazirmatn", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    .navbar {
+      transition: all 0.4s ease;
+      backdrop-filter: blur(10px);
+      color: aliceblue !important;
+    }
+    .nav-scrolled {
+      background: rgba(73, 113, 165, 0.95);
+      backdrop-filter: blur(10px);
+      color: aliceblue !important;
+    }
+    .about-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("wallpaper.jpg");
+      background-position: center;
+      background-size: cover;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 50%;
+      transform: translateX(50%);
+      width: 4px;
+      height: 100%;
+      background: #f9a825;
+    }
+    .team-card:hover .team-image {
+      transform: scale(1.05);
+    }
+    .values-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .map-container {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+    .cta-section {
+      background: linear-gradient(
+          rgba(30, 58, 95, 0.9),
+          rgba(30, 58, 95, 0.9)
+        ),
+        url("wallpaper.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+    .persian-numbers {
+      font-feature-settings: "ss02";
+      font-variant-numeric: persian;
+    }
+  </style>
+</head>
+<body class="font-vazir bg-gray-50 text-gray-800">
+  <!-- Navigation -->
+  <nav class="navbar fixed w-full z-50 py-4 px-4 md:px-8">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <div class="w-10 h-10 rounded-full bg-desert-gold flex items-center justify-center">
+          <i class="fas fa-mountain text-alborz-blue text-xl"></i>
+        </div>
+        <span class="text-2xl font-bold text-alborz-blue">
+            اِور<span class="text-accent-yellow">وایلد</span>
+        </span>
+      </div>
+
+      <div class="hidden md:flex space-x-8">
+        <a href="index.html" class="font-semibold hover:text-caspian-blue transition">خانه</a>
+        <a href="#" class="font-semibold hover:text-caspian-blue transition">تورها</a>
+        <a href="#" class="font-semibold hover:text-caspian-blue transition">مقاصد</a>
+        <a href="about.html" class="font-semibold text-desert-gold transition">درباره ما</a>
+        <a href="#" class="font-semibold hover:text-caspian-blue transition">تماس با ما</a>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <button class="hidden md:block bg-desert-gold text-alborz-blue font-bold py-2 px-6 rounded-full hover:bg-volcano-orange transition">
+          رزرو تور
+        </button>
+        <button class="md:hidden text-alborz-blue">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="about-hero pt-32 pb-24 md:pt-48 md:pb-36">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 text-center">
+      <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+        داستان ما در <span class="text-desert-gold">طبیعت بکر</span>
+      </h1>
+      <p class="text-xl text-white mb-10 opacity-90 max-w-3xl mx-auto">
+        بیش از ۲۵ سال است که ماجراجویان را در شگفت‌انگیزترین مناظر ایران هدایت می‌کنیم و خاطراتی فراموش‌نشدنی در دل طبیعت خلق می‌کنیم.
+      </p>
+      <div class="flex justify-center gap-4">
+        <button class="bg-desert-gold text-alborz-blue font-bold py-3 px-8 rounded-full text-lg hover:bg-volcano-orange transition">
+          ملاقات با تیم ما
+        </button>
+        <button class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-white hover:text-alborz-blue transition">
+          تماشای سفر ما
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="relative">
+          <div class="relative rounded-2xl overflow-hidden shadow-xl h-96">
+            <img src="Hormoz1.jpg" alt="دامنه‌های البرز" class="absolute inset-0 w-full h-full object-cover">
+          </div>
+          <div class="absolute -bottom-8 -left-4 bg-desert-gold text-alborz-blue font-bold py-4 px-8 rounded-xl shadow-lg">
+            <div class="text-5xl font-bold persian-numbers">۲۵+</div>
+            <div>سال ماجراجویی</div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-alborz-blue mb-6">
+            مأموریت ما: پیوند انسان با طبیعت
+          </h2>
+          <p class="text-gray-600 mb-6">
+            در اکسپدیشن‌های دامون، ما معتقدیم طبیعت قدرت دگرگون‌سازی زندگی را دارد. مأموریت ما ایجاد ارتباط معنادار بین مردم و دنیای طبیعی از طریق ماجراجویی‌های برنامه‌ریزی شده‌ای است که الهام‌بخش شگفتی، تقویت درک و خلق خاطرات ماندگار هستند.
+          </p>
+          <p class="text-gray-600 mb-8">
+            تأسیس شده در سال ۱۳۷۷ توسط کوهنورد حرفه‌ای، رضا احمدی، ما از یک تور راهنمایی ساده به یکی از معتبرترین شرکت‌های ماجراجویی در ایران تبدیل شده‌ایم، بدون اینکه هرگز از ارزش‌های اصلی خود غافل شویم: حفاظت، آموزش و تجربیات اصیل.
+          </p>
+          <div class="flex items-center">
+            <img src="damavand.jpg" alt="بنیان‌گذار" class="w-16 h-16 rounded-full border-4 border-white shadow-lg ml-4">
+            <div>
+              <div class="font-bold text-lg">رضا احمدی</div>
+              <div class="text-caspian-blue">بنیان‌گذار و راهنمای ارشد</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-alborz-blue mb-4">
+          سفر ما در طول زمان
+        </h2>
+        <div class="w-24 h-1 bg-desert-gold mx-auto"></div>
+      </div>
+
+      <div class="relative">
+        <!-- Timeline Line -->
+        <div class="hidden lg:block absolute right-1/2 top-0 bottom-0 w-1 bg-desert-gold transform translate-x-1/2"></div>
+
+        <div class="space-y-12 lg:space-y-0">
+          <!-- Timeline Item 1 -->
+          <div class="relative lg:grid lg:grid-cols-2 gap-8 items-center">
+            <div class="lg:text-left lg:pl-16 pb-8 lg:pb-0">
+              <div class="inline-block bg-alborz-blue text-white py-2 px-6 rounded-full text-lg font-bold mb-4 persian-numbers">
+                ۱۳۷۷
+              </div>
+              <h3 class="text-2xl font-bold text-alborz-blue mb-3">
+                آغاز متواضعانه
+              </h3>
+              <p class="text-gray-600">
+                رضا احمدی اکسپدیشن‌های دامون را با تنها یک ون و شور و شوق برای به اشتراک گذاشتن شگفتی‌های طبیعت ایران آغاز کرد. اولین تور ما تنها ۶ مهمان داشت!
+              </p>
+            </div>
+            <div class="flex justify-center lg:justify-start">
+              <div class="relative rounded-2xl overflow-hidden shadow-xl w-full max-w-md h-64">
+                <img src="wallpaper.jpg" alt="آغاز کار" class="absolute inset-0 w-full h-full object-cover">
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="relative lg:grid lg:grid-cols-2 gap-8 items-center">
+            <div class="lg:order-first lg:pr-16 pb-8 lg:pb-0">
+              <div class="inline-block bg-desert-gold text-alborz-blue py-2 px-6 rounded-full text-lg font-bold mb-4 persian-numbers">
+                ۱۳۸۴
+              </div>
+              <h3 class="text-2xl font-bold text-alborz-blue mb-3">
+                همکاری حفاظتی
+              </h3>
+              <p class="text-gray-600">
+                ما صندوق حفاظت خود را تأسیس کردیم و ۵٪ از کل سود را به برنامه‌های حفاظت از پارک‌ها و محافظت از حیات وحش اختصاص دادیم.
+              </p>
+            </div>
+            <div class="flex justify-center lg:justify-end">
+              <div class="relative rounded-2xl overflow-hidden shadow-xl w-full max-w-md h-64">
+                <img src="a0a5c3c9-2d8b-4a1e-9ef0-43929a21cab1.jpg" alt="حفاظت" class="absolute inset-0 w-full h-full object-cover">
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3 -->
+          <div class="relative lg:grid lg:grid-cols-2 gap-8 items-center">
+            <div class="lg:text-left lg:pl-16 pb-8 lg:pb-0">
+              <div class="inline-block bg-alborz-blue text-white py-2 px-6 rounded-full text-lg font-bold mb-4 persian-numbers">
+                ۱۳۹۱
+              </div>
+              <h3 class="text-2xl font-bold text-alborz-blue mb-3">
+                تقدیر ملی
+              </h3>
+              <p class="text-gray-600">
+                جایزه "گردشگری مسئولانه سال" را برای شیوه‌های پایدار و برنامه‌های آموزشی خود دریافت کردیم.
+              </p>
+            </div>
+            <div class="flex justify-center lg:justify-start">
+              <div class="relative rounded-2xl overflow-hidden shadow-xl w-full max-w-md h-64">
+                <img src="bg.jpg" alt="تقدیر" class="absolute inset-0 w-full h-full object-cover">
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 4 -->
+          <div class="relative lg:grid lg:grid-cols-2 gap-8 items-center">
+            <div class="lg:order-first lg:pr-16 pb-8 lg:pb-0">
+              <div class="inline-block bg-desert-gold text-alborz-blue py-2 px-6 rounded-full text-lg font-bold mb-4 persian-numbers">
+                ۱۳۹۹
+              </div>
+              <h3 class="text-2xl font-bold text-alborz-blue mb-3">
+                گسترش افق‌ها
+              </h3>
+              <p class="text-gray-600">
+                تورهای کویر لوت و جزایر خلیج فارس را راه‌اندازی کردیم و در عین حفظ تعهد خود به کیفیت، فراتر از البرز گسترش یافتیم.
+              </p>
+            </div>
+            <div class="flex justify-center lg:justify-end">
+              <div class="relative rounded-2xl overflow-hidden shadow-xl w-full max-w-md h-64">
+                <img src="hotmox.jpg" alt="گسترش" class="absolute inset-0 w-full h-full object-cover">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-alborz-blue mb-4">
+          با تیم ماجراجویی ما آشنا شوید
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          راهنمایان متخصص ما قلب اکسپدیشن‌های دامون هستند که دانش عمیق را با اشتیاق مسری برای طبیعت ترکیب می‌کنند.
+        </p>
+        <div class="w-24 h-1 bg-desert-gold mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Team Member 1 -->
+        <div class="team-card bg-white rounded-2xl overflow-hidden shadow-lg transition duration-300">
+          <div class="relative h-80 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="سارا محمدی" class="team-image absolute inset-0 w-full h-full object-cover transition duration-500">
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-bold text-alborz-blue mb-1">
+              سارا محمدی
+            </h3>
+            <div class="text-caspian-blue font-semibold mb-3">
+              راهنمای ارشد طبیعت
+            </div>
+            <p class="text-gray-600 text-sm mb-4">
+              ۱۲ سال تجربه، متخصص زمین‌شناسی، ردیاب حیات وحش
+            </p>
+            <div class="flex justify-center space-x-3">
+              <a href="#" class="text-caspian-blue hover:text-alborz-blue">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="text-caspian-blue hover:text-alborz-blue">
+                <i class="fab fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="team-card bg-white rounded-2xl overflow-hidden shadow-lg transition duration-300">
+          <div class="relative h-80 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="امیر حسینی" class="team-image absolute inset-0 w-full h-full object-cover transition duration-500">
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-bold text-alborz-blue mb-1">
+              امیر حسینی
+            </h3>
+            <div class="text-caspian-blue font-semibold mb-3">
+              رهبر اکسپدیشن
+            </div>
+            <p class="text-gray-600 text-sm mb-4">
+              متخصص کوهنوردی، مربی بقا، بیش از ۱۵ سال تجربه
+            </p>
+            <div class="flex justify-center space-x-3">
+              <a href="#" class="text-caspian-blue hover:text-alborz-blue">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="text-caspian-blue hover:text-alborz-blue">
+                <i class="fab fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="team-card bg-white rounded-2xl overflow-hidden shadow-lg transition duration-300">
+          <div class="relative h-80 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="نازنین رضایی" class="team-image absolute inset-0 w-full h-full object-cover transition duration-500">
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-bold text-alborz-blue mb-1">
+              نازنین رضایی
+            </h3>
+            <div class="text-caspian-blue font-semibold mb-3">
+              متخصص حیات وحش
+            </div>
+            <p class="text-gray-600 text-sm mb-4">
+              دکترای اکولوژی، متخصص رفتار حیوانات، راهنمای عکاسی
+            </p>
+            <div class="flex justify-center space-x-3">
+              <a href="#" class="text-caspian-blue hover:text-alborz-blue">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="text-caspian-blue hover:text-alborz-blue">
+                <i class="fab fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div class="team-card bg-white rounded-2xl overflow-hidden shadow-lg transition duration-300">
+          <div class="relative h-80 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="پویا جعفری" class="team-image absolute inset-0 w-full h-full object-cover transition duration-500">
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-bold text-alborz-blue mb-1">
+              پویا جعفری
+            </h3>
+            <div class="text-caspian-blue font-semibold mb-3">
+              مدیر ماجراجویی
+            </div>
+            <p class="text-gray-600 text-sm mb-4">
+              راهنمای سابق پارک‌ها، متخصص ایمنی، بیش از ۲۰ سال تجربه
+            </p>
+            <div class="flex justify-center space-x-3">
+              <a href="#" class="text-caspian-blue hover:text-alborz-blue">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="text-caspian-blue hover:text-alborz-blue">
+                <i class="fab fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="py-20 bg-alborz-blue">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          ارزش‌های اصلی ما
+        </h2>
+        <p class="text-caspian-blue max-w-2xl mx-auto">
+          اصولی که هر ماجراجویی ما را هدایت می‌کند
+        </p>
+        <div class="w-24 h-1 bg-desert-gold mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Value 1 -->
+        <div class="values-card bg-white p-8 rounded-2xl shadow-lg text-center transition duration-300">
+          <div class="w-20 h-20 rounded-full bg-alborz-blue flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-mountain text-desert-gold text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-alborz-blue mb-3">
+            حفاظت اولویت اول
+          </h3>
+          <p class="text-gray-600">
+            ما ردپایی برجا نمی‌گذاریم و فعالانه برای محافظت از اکوسیستم‌هایی که کاوش می‌کنیم تلاش می‌کنیم.
+          </p>
+        </div>
+
+        <!-- Value 2 -->
+        <div class="values-card bg-white p-8 rounded-2xl shadow-lg text-center transition duration-300">
+          <div class="w-20 h-20 rounded-full bg-alborz-blue flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-book text-desert-gold text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-alborz-blue mb-3">
+            تمرکز بر آموزش
+          </h3>
+          <p class="text-gray-600">
+            راهنمایان ما مربیانی هستند که درک شما از طبیعت را عمیق‌تر می‌کنند.
+          </p>
+        </div>
+
+        <!-- Value 3 -->
+        <div class="values-card bg-white p-8 rounded-2xl shadow-lg text-center transition duration-300">
+          <div class="w-20 h-20 rounded-full bg-alborz-blue flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-shield-alt text-desert-gold text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-alborz-blue mb-3">
+            تعهد به ایمنی
+          </h3>
+          <p class="text-gray-600">
+            رفاه شما در هر اکسپدیشن اولویت اصلی ماست.
+          </p>
+        </div>
+
+        <!-- Value 4 -->
+        <div class="values-card bg-white p-8 rounded-2xl shadow-lg text-center transition duration-300">
+          <div class="w-20 h-20 rounded-full bg-alborz-blue flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-hand-holding-heart text-desert-gold text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-alborz-blue mb-3">
+            تجربیات اصیل
+          </h3>
+          <p class="text-gray-600">
+            ما ارتباطات واقعی بین مردم و طبیعت وحشی ایجاد می‌کنیم.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Section -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-alborz-blue mb-6">
+            تأثیر ما بر حفاظت
+          </h2>
+          <p class="text-gray-600 mb-6">
+            از زمان تأسیس، ما به حفظ شگفتی‌های طبیعی که به نمایش می‌گذاریم متعهد بوده‌ایم. از طریق صندوق حفاظت خود، بیش از ۱۰ میلیارد تومان به برنامه‌های زیست‌محیطی در اکوسیستم البرز کمک کرده‌ایم.
+          </p>
+          <div class="grid grid-cols-2 gap-6 mb-8">
+            <div class="bg-gray-50 p-6 rounded-xl">
+              <div class="text-4xl font-bold text-desert-gold mb-2 persian-numbers">
+                ۲۵۰,۰۰۰+
+              </div>
+              <div class="text-gray-600">درخت کاشته شده</div>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-xl">
+              <div class="text-4xl font-bold text-desert-gold mb-2 persian-numbers">
+                ۱۵,۰۰۰
+              </div>
+              <div class="text-gray-600">هکتار محافظت شده</div>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-xl">
+              <div class="text-4xl font-bold text-desert-gold mb-2 persian-numbers">
+                ۸,۰۰۰+
+              </div>
+              <div class="text-gray-600">نفر دانش‌آموز آموزش دیده</div>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-xl">
+              <div class="text-4xl font-bold text-desert-gold mb-2 persian-numbers">
+                ۱۰ میلیارد
+              </div>
+              <div class="text-gray-600">تومان سرمایه‌گذاری در حفاظت</div>
+            </div>
+          </div>
+          <button class="bg-desert-gold text-alborz-blue font-bold py-3 px-8 rounded-full hover:bg-volcano-orange transition">
+            حمایت از تلاش‌های ما
+          </button>
+        </div>
+
+        <div class="relative">
+          <div class="relative rounded-2xl overflow-hidden shadow-xl h-96">
+            <img src="https://images.unsplash.com/photo-1547981609-4b6bf67db7e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="حفاظت" class="absolute inset-0 w-full h-full object-cover">
+          </div>
+          <div class="absolute -top-6 -right-6 w-32 h-32 bg-caspian-blue rounded-full flex items-center justify-center text-white font-bold text-center p-4 shadow-lg animate-float">
+            محافظت از طبیعت از ۱۳۷۷
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section py-20">
+    <div class="max-w-5xl mx-auto rounded-3xl overflow-hidden">
+      <div class="py-16 px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+          آماده ماجراجویی خود هستید؟
+        </h2>
+        <p class="text-caspian-blue text-xl mb-10 max-w-2xl mx-auto">
+          به هزاران مسافری بپیوندید که قدرت دگرگون‌کننده طبیعت ایران را با راهنمایان متخصص ما کشف کرده‌اند.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <button class="bg-desert-gold text-alborz-blue font-bold py-3 px-8 rounded-full text-lg hover:bg-volcano-orange transition">
+            کشف تورهای ما
+          </button>
+          <button class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-white hover:text-alborz-blue transition">
+            تماس با تیم ما
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-alborz-blue text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div>
+          <div class="flex items-center space-x-2 mb-6">
+            <div class="w-10 h-10 rounded-full bg-desert-gold flex items-center justify-center">
+              <i class="fas fa-mountain text-alborz-blue text-xl"></i>
+            </div>
+            <span class="text-2xl font-bold">
+              دامون<span class="text-desert-gold">اکسپدیشن‌ها</span>
+            </span>
+          </div>
+          <p class="text-caspian-blue mb-6">
+            هدایت ماجراجویی‌های اصیل در شگفت‌انگیزترین مناطق طبیعت ایران از سال ۱۳۷۷.
+          </p>
+          <div class="flex space-x-4">
+            <div class="w-10 h-10 rounded-full bg-caspian-blue flex items-center justify-center">
+              <i class="fab fa-facebook-f"></i>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-caspian-blue flex items-center justify-center">
+              <i class="fab fa-instagram"></i>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-caspian-blue flex items-center justify-center">
+              <i class="fab fa-twitter"></i>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-caspian-blue flex items-center justify-center">
+              <i class="fab fa-youtube"></i>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-6">لینک‌های سریع</h4>
+          <ul class="space-y-3">
+            <li>
+              <a href="#" class="text-caspian-blue hover:text-desert-gold transition">خانه</a>
+            </li>
+            <li>
+              <a href="#" class="text-caspian-blue hover:text-desert-gold transition">تورها</a>
+            </li>
+            <li>
+              <a href="about.html" class="text-caspian-blue hover:text-desert-gold transition">درباره ما</a>
+            </li>
+            <li>
+              <a href="#" class="text-caspian-blue hover:text-desert-gold transition">گالری</a>
+            </li>
+            <li>
+              <a href="#" class="text-caspian-blue hover:text-desert-gold transition">تماس</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-6">منابع</h4>
+          <ul class="space-y-3">
+            <li>
+              <a href="#" class="text-caspian-blue hover:text-desert-gold transition">نکات سفر</a>
+            </li>
+            <li>
+              <a href="#" class="text-caspian-blue hover:text-desert-gold transition">لیست وسایل</a>
+            </li>
+            <li>
+              <a href="#" class="text-caspian-blue hover:text-desert-gold transition">راهنمای حیات وحش</a>
+            </li>
+            <li>
+              <a href="#" class="text-caspian-blue hover:text-desert-gold transition">تلاش‌های حفاظتی</a>
+            </li>
+            <li>
+              <a href="#" class="text-caspian-blue hover:text-desert-gold transition">سؤالات متداول</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-6">تماس با ما</h4>
+          <ul class="space-y-4 text-caspian-blue">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt mt-1 ml-3 text-desert-gold"></i>
+              <span>تهران، خیابان ولیعصر، پلاک ۱۲۳</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone mt-1 ml-3 text-desert-gold"></i>
+              <span class="persian-numbers">۰۲۱-۸۸۸۱۲۳۴۵</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope mt-1 ml-3 text-desert-gold"></i>
+              <span>info@damoon-expeditions.ir</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-clock mt-1 ml-3 text-desert-gold"></i>
+              <span>شنبه تا چهارشنبه: ۹-۱۸ | پنجشنبه: ۱۰-۱۶</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-caspian-blue border-opacity-20 text-center text-caspian-blue text-sm">
+        <p>
+          © ۱۴۰۲ اکسپدیشن‌های دامون. تمامی حقوق محفوظ است. روح ایران را تجربه کنید.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener("scroll", () => {
+      const navbar = document.querySelector(".navbar");
+      if (window.scrollY > 50) {
+        navbar.classList.add("nav-scrolled");
+        navbar.classList.add("py-3");
+        navbar.classList.remove("py-4");
+      } else {
+        navbar.classList.remove("nav-scrolled");
+        navbar.classList.remove("py-3");
+        navbar.classList.add("py-4");
+      }
+    });
+
+    // Initialize the navbar state
+    window.dispatchEvent(new Event("scroll"));
+  </script>
+</body>
+</html>
